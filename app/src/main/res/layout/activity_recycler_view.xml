@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.kycq.refresh.list.RecyclerViewActivity">
+	
+	<data>
+		
+		<variable
+			name="sdsfdsds"
+			type="String"/>
+	</data>
+	
+	<com.kycq.library.refresh.RefreshLayout
+		android:id="@+id/refreshLayout"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:refresh_statusMode="hide"
+		app:refresh_viewHeader="@layout/refresh_header"
+		app:refresh_viewStatus="@layout/refresh_status">
+		
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/recyclerView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+	</com.kycq.library.refresh.RefreshLayout>
+</layout>

@@ -1,3 +1,25 @@
 <resources>
 	<string name="app_name">KycqRefresh</string>
+	<string name="setting">设置</string>
+	<string name="refresh_ready">准备刷新</string>
+	<string name="refreshing">刷新中</string>
+	<string name="complete_success">请求成功</string>
+	<string name="complete_failure">请求失败</string>
+	<string name="complete_error">请求错误</string>
+	<string name="complete_custom">自定义请求</string>
+	<string name="loading">loading</string>
+	<string name="auto">auto</string>
+	<string name="show">show</string>
+	<string name="hide">hide</string>
+	<string name="please_enter_the_number_of_data">请输入数据数量</string>
+	<string name="the_default_number_of_data">10</string>
+	<string name="whether_to_load_more">是否加载更多</string>
+	<string name="load_ready">loadReady</string>
+	<string name="network_error">networkError</string>
+	<string name="load_failure">loadFailure</string>
+	<string name="load_complete">loadComplete</string>
+	<string name="nestedscrollview">NestedScrollView</string>
+	<string name="recyclerview">RecyclerView</string>
+	<string name="refresh">refresh</string>
+	<string name="complete">complete</string>
 </resources>

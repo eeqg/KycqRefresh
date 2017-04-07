@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.kycq.refresh.SplashActivity">
+	
+	<data>
+		
+		<import type="android.view.View.OnClickListener"/>
+		
+		<variable
+			name="nestedScrollViewClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="recyclerViewClickListener"
+			type="OnClickListener"/>
+	
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="@{nestedScrollViewClickListener}"
+			android:text="@string/nestedscrollview"
+			android:textAllCaps="false"/>
+		
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="@{recyclerViewClickListener}"
+			android:text="@string/recyclerview"
+			android:textAllCaps="false"/>
+	</LinearLayout>
+</layout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:padding="10dp">
+		
+		<android.support.design.widget.TextInputLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<android.support.design.widget.TextInputEditText
+				android:id="@+id/editCount"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/please_enter_the_number_of_data"
+				android:inputType="numberSigned"
+				android:text="@string/the_default_number_of_data"
+				android:textSize="16sp"/>
+		</android.support.design.widget.TextInputLayout>
+		
+		<CheckBox
+			android:id="@+id/cbNeedLoad"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:checked="true"
+			android:text="@string/whether_to_load_more"/>
+	</LinearLayout>
+</layout>

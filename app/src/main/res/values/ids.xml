@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<item name="setting" type="id"/>
+	<item name="refreshReady" type="id"/>
+	<item name="refreshing" type="id"/>
+	<item name="completeSuccess" type="id"/>
+	<item name="completeFailure" type="id"/>
+	<item name="completeError" type="id"/>
+	<item name="completeCustom" type="id"/>
+</resources>

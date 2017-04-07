@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<RadioGroup
+		android:id="@+id/rgStatusMode"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:checkedButton="@+id/rbAuto"
+		android:padding="10dp">
+		
+		<RadioButton
+			android:id="@+id/rbAuto"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/auto"/>
+		
+		<RadioButton
+			android:id="@+id/rbShow"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/show"/>
+		
+		<RadioButton
+			android:id="@+id/rbHide"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/hide"/>
+	</RadioGroup>
+</layout>

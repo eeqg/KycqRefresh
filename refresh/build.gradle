@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+android {
+	compileSdkVersion 25
+	buildToolsVersion "25.0.2"
+	
+	defaultConfig {
+		minSdkVersion 14
+		targetSdkVersion 25
+		versionCode 1
+		versionName "1.0"
+		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
+	
+	libraryVariants.all { variant ->
+		variant.outputs.each { output ->
+			def versionName = defaultConfig.versionName
+			def outputFile = output.outputFile
+			if (outputFile != null && outputFile.name.endsWith('.aar')) {
+				def fileName
+				if (variant.buildType.name == "release") {
+					fileName = "${archivesBaseName}-${versionName}.aar"
+				} else {
+					fileName = "${archivesBaseName}-${variant.name}-${versionName}.aar"
+				}
+				output.outputFile = new File(outputFile.parent, fileName)
+			}
+		}
+	}
+	
+	def publish = project.tasks.create("publish")
+	publish.dependsOn project.clean
+	libraryVariants.all { variant ->
+		variant.outputs.each { output ->
+			def name = variant.name.substring(0, 1).toUpperCase() + variant.name.substring(1)
+			def task = project.tasks.create("publish${name}", Copy)
+			task.from(output.outputFile)
+			task.into("../publish")
+			task.include(output.outputFile.name)
+
+			task.dependsOn variant.assemble
+			publish.dependsOn task
+		}
+	}
+}
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+	androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+		exclude group: 'com.android.support', module: 'support-annotations'
+	})
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+	provided 'com.android.support:appcompat-v7:25.3.1'
+	provided 'com.android.support:design:25.3.1'
+	provided 'com.android.support:recyclerview-v7:25.3.1'
+}

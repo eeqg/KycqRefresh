@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.kycq.refresh.nested.NestedScrollViewActivity">
+	
+	<data>
+		
+		<import type="android.view.View.OnClickListener"/>
+		
+		<variable
+			name="refreshClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="completeClickListener"
+			type="OnClickListener"/>
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<Button
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:onClick="@{refreshClickListener}"
+				android:text="@string/refresh"/>
+			
+			<Button
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:onClick="@{completeClickListener}"
+				android:text="@string/complete"/>
+		</LinearLayout>
+		
+		<com.kycq.library.refresh.RefreshLayout
+			android:id="@+id/refreshLayout"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:refresh_statusMode="show"
+			app:refresh_viewHeader="@layout/refresh_header"
+			app:refresh_viewStatus="@layout/refresh_status">
+			
+			<android.support.v4.widget.NestedScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+				
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="sfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaassfdsfasfasfaas"/>
+			</android.support.v4.widget.NestedScrollView>
+		</com.kycq.library.refresh.RefreshLayout>
+	</LinearLayout>
+</layout>
