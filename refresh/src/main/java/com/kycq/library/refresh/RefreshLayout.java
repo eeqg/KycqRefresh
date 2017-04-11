@@ -618,6 +618,9 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 			} else if (this.mStatusMode == STATUS_MODE_AUTO) {
 				mViewStatus.setVisibility(VISIBLE);
 			}
+			if (isInEditMode()) {
+				mViewStatus.setVisibility(GONE);
+			}
 		}
 		
 		if (mViewTarget != null) {
@@ -627,6 +630,9 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 				mViewTarget.setVisibility(VISIBLE);
 			} else if (this.mStatusMode == STATUS_MODE_AUTO) {
 				mViewTarget.setVisibility(GONE);
+			}
+			if (isInEditMode()) {
+				mViewTarget.setVisibility(VISIBLE);
 			}
 		}
 		
