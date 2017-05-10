@@ -86,6 +86,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 			menu.findItem(R.id.completeCustom).setEnabled(true);
 			return true;
 		} else if (this.stringListAdapter.getStatus() == RecyclerAdapter.REFRESHING) {
+			menu.findItem(R.id.refreshing).setEnabled(true);
 			menu.findItem(R.id.completeSuccess).setEnabled(true);
 			menu.findItem(R.id.completeFailure).setEnabled(true);
 			menu.findItem(R.id.completeError).setEnabled(true);

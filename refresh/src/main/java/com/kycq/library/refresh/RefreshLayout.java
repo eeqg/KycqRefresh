@@ -148,7 +148,11 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 		mRefreshStatus = (RefreshStatus) viewStatus;
 		mViewStatus = viewStatus;
 		
+		if (mOnTryRefreshListener != null) {
+			mOnTryRefreshListener.refreshLayout = null;
+		}
 		mOnTryRefreshListener = new OnTryRefreshListener();
+		mOnTryRefreshListener.refreshLayout = this;
 		mRefreshStatus.initOnTryRefreshListener(mOnTryRefreshListener);
 		
 		initStatusMode();
@@ -211,6 +215,15 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 			ensureTarget();
 			notifyRefreshComplete(statusInfo);
 			mSmoothScroller.scrollToStart();
+		}
+	}
+	
+	@Override
+	protected void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
+		if (mOnTryRefreshListener != null) {
+			mOnTryRefreshListener.refreshLayout = null;
+			mOnTryRefreshListener = null;
 		}
 	}
 	
@@ -958,11 +971,16 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 		void onRefresh();
 	}
 	
-	public class OnTryRefreshListener {
+	public static class OnTryRefreshListener {
+		private RefreshLayout refreshLayout;
+		
 		public final void onRefresh() {
-			if (mStatus == Status.refreshReady
-					|| mStatus == Status.refreshComplete) {
-				notifyRefresh();
+			if (this.refreshLayout == null) {
+				return;
+			}
+			if (this.refreshLayout.mStatus == Status.refreshReady
+					|| this.refreshLayout.mStatus == Status.refreshComplete) {
+				this.refreshLayout.notifyRefresh();
 			}
 		}
 	}

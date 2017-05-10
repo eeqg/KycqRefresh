@@ -43,7 +43,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 	private OnRecyclerScrollListener onRecyclerScrollListener;
 	
 	private OnTaskListener onTaskListener;
-	// private Status status = Status.refreshReady;
+	
 	private
 	@Status
 	int status = REFRESH_READY;
@@ -106,9 +106,9 @@ public abstract class RecyclerAdapter<StatusInfo> {
 	}
 	
 	public void swipeRefresh() {
-		if (this.status == REFRESHING) {
-			return;
-		}
+		// if (this.status == REFRESHING) {
+		// 	return;
+		// }
 		
 		this.status = REFRESHING;
 		if (this.refreshLayout != null) {
