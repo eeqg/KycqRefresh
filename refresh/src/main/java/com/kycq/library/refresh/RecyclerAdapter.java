@@ -102,23 +102,20 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		if (this.onTaskListener != null) {
 			this.onTaskListener.cancel();
 		}
+		
 		notifyDataSetChanged();
 	}
 	
 	public void swipeRefresh() {
-		// if (this.status == REFRESHING) {
-		// 	return;
-		// }
-		
 		this.status = REFRESHING;
 		if (this.refreshLayout != null) {
 			this.refreshLayout.swipeRefresh();
 		}
-		notifyDataSetChanged();
-		
 		if (this.onTaskListener != null) {
 			this.onTaskListener.notifyRefresh();
 		}
+		
+		notifyDataSetChanged();
 	}
 	
 	public void swipeLoadReady() {
@@ -128,6 +125,10 @@ public abstract class RecyclerAdapter<StatusInfo> {
 	public void swipeLoadReady(boolean autoLoad) {
 		this.autoLoad = autoLoad;
 		this.status = LOAD_READY;
+		if (this.onTaskListener != null) {
+			this.onTaskListener.cancel();
+		}
+		
 		notifyItemChanged(getItemCount());
 	}
 	
@@ -136,11 +137,11 @@ public abstract class RecyclerAdapter<StatusInfo> {
 			return;
 		}
 		this.status = LOADING;
-		notifyItemChanged(getItemCount());
-		
 		if (this.onTaskListener != null) {
 			this.onTaskListener.notifyLoading();
 		}
+		
+		notifyItemChanged(getItemCount());
 	}
 	
 	public void swipeComplete(StatusInfo statusInfo) {
@@ -150,11 +151,18 @@ public abstract class RecyclerAdapter<StatusInfo> {
 			if (this.refreshLayout != null) {
 				this.refreshLayout.swipeComplete(statusInfo);
 			}
+			if (this.onTaskListener != null) {
+				this.onTaskListener.cancel();
+			}
 			
 			notifyDataSetChanged();
 		} else if (this.status == LOADING || this.status == LOAD_READY) {
 			this.statusInfo = statusInfo;
 			this.status = LOAD_COMPLETE;
+			if (this.onTaskListener != null) {
+				this.onTaskListener.cancel();
+			}
+			
 			notifyItemChanged(getItemCount());
 		} else {
 			this.statusInfo = statusInfo;
@@ -162,14 +170,15 @@ public abstract class RecyclerAdapter<StatusInfo> {
 			if (this.refreshLayout != null) {
 				this.refreshLayout.swipeComplete(statusInfo);
 			}
+			if (this.onTaskListener != null) {
+				this.onTaskListener.cancel();
+			}
 			
 			notifyDataSetChanged();
 		}
 	}
 	
-	public
-	@Status
-	int getStatus() {
+	public @Status int getStatus() {
 		return this.status;
 	}
 	
