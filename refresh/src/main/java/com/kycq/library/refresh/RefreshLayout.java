@@ -610,6 +610,10 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 		toggleStatus(true);
 	}
 	
+	boolean isRefreshing() {
+		return mStatus == Status.refreshing;
+	}
+	
 	private <StatusInfo> void notifyRefreshComplete(StatusInfo statusInfo) {
 		mStatus = Status.refreshComplete;
 		if (mRefreshHeader != null) {

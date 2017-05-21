@@ -107,15 +107,13 @@ public abstract class RecyclerAdapter<StatusInfo> {
 	}
 	
 	public void swipeRefresh() {
-		this.status = REFRESHING;
-		if (this.refreshLayout != null) {
+		if (this.refreshLayout != null && !this.refreshLayout.isRefreshing()) {
 			this.refreshLayout.swipeRefresh();
-		}
-		if (this.onTaskListener != null) {
+		}  if (this.onTaskListener != null) {
+			this.status = REFRESHING;
 			this.onTaskListener.notifyRefresh();
+			notifyDataSetChanged();
 		}
-		
-		notifyDataSetChanged();
 	}
 	
 	public void swipeLoadReady() {
@@ -178,7 +176,9 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		}
 	}
 	
-	public @Status int getStatus() {
+	public
+	@Status
+	int getStatus() {
 		return this.status;
 	}
 	
@@ -436,7 +436,9 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		
 		@Override
 		public void onRefresh() {
-			this.recyclerAdapter.swipeRefresh();
+			this.recyclerAdapter.status = REFRESHING;
+			this.recyclerAdapter.onTaskListener.notifyRefresh();
+			this.recyclerAdapter.notifyDataSetChanged();
 		}
 	}
 	
