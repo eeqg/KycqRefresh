@@ -69,6 +69,7 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 	private View mViewTarget;
 	
 	private OnRefreshListener mOnRefreshListener;
+	private OnRefreshScaleListener mOnRefreshScaleListener;
 	private OnTryRefreshListener mOnTryRefreshListener;
 	
 	public RefreshLayout(Context context) {
@@ -165,6 +166,10 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 	
 	public void setOnRefreshListener(OnRefreshListener listener) {
 		mOnRefreshListener = listener;
+	}
+	
+	public void setOnRefreshScaleListener(OnRefreshScaleListener listener) {
+		mOnRefreshScaleListener = listener;
 	}
 	
 	private void ensureTarget() {
@@ -549,9 +554,9 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 		// }
 		
 		float scale = (float) (1.0 * mCurrentPosition / mViewHeader.getMeasuredHeight());
-		// if (mOnRefreshScaleListener != null) {
-		// 	mOnRefreshScaleListener.onScale(scale);
-		// }
+		if (mOnRefreshScaleListener != null) {
+			mOnRefreshScaleListener.onScale(scale);
+		}
 		
 		offsetLayout(offset, scale);
 	}
@@ -973,6 +978,11 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 	
 	public interface OnRefreshListener {
 		void onRefresh();
+	}
+	
+	public interface OnRefreshScaleListener {
+		
+		void onScale(float scale);
 	}
 	
 	public static class OnTryRefreshListener {
